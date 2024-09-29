@@ -1,1 +1,3 @@
 docker run --gpus all -it --net=host --rm -p 8001:8001 --shm-size=1G --ulimit memlock=-1 --ulimit stack=67108864 -v ${PWD}:/work -w /work nvcr.io/nvidia/tritonserver:24.08-vllm-python-py3 tritonserver --model-repository ./model_repository
+
+docker run -it --net=host --rm -p 8001:8001 --shm-size=1G --ulimit memlock=-1 --ulimit stack=67108864 -v ${PWD}:/work -w /work nvcr.io/nvidia/tritonserver:24.08-vllm-python-py3 tritonserver --model-repository ./model_repository
