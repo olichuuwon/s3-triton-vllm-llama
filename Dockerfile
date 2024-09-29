@@ -7,8 +7,11 @@ WORKDIR /work
 # Copy the local model repository into the image
 COPY ./model_repository /work/model_repository
 
+# Create a .cache directory in the root and set appropriate permissions
+RUN mkdir -p /.cache && chmod -R 777 /.cache
+
 # Expose the required port
-EXPOSE 8001
+EXPOSE 8000
 
 # Command to start the Triton server with the model repository
 CMD ["tritonserver", "--model-repository", "/work/model_repository"]

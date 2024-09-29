@@ -1,10 +1,12 @@
-HTTP_LINK = "<external-ip>:8001"
+# HTTP_LINK = "<external-ip>:8001"
+HTTP_LINK = "example-triton-jes.apps.nebula.sl"
 
 #!/usr/bin/env python3
 
 # Copyright 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
+
 # modification, are permitted provided that the following conditions
 # are met:
 #  * Redistributions of source code must retain the above copyright
@@ -140,7 +142,15 @@ class LLMClient:
             print("FAIL: vLLM example")
 
     def run_async(self):
-        self._loop.run_until_complete(self.run())
+        try:
+            # Check if there is an existing event loop and run the task in it
+            loop = asyncio.get_running_loop()
+        except RuntimeError:  # No event loop, create one
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+
+        # Now, run the main `run()` function in the event loop
+        loop.run_until_complete(self.run())
 
     def create_request(
         self,

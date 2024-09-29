@@ -17,7 +17,7 @@ spec:
       - name: triton-server
         image: quay.io/jeslynlamxy/tritonserver-with-models:latest  # Use the custom image
         ports:
-        - containerPort: 8001
+        - containerPort: 8000
         resources:
           limits:
             nvidia.com/gpu: 1  # Request GPU resources
@@ -39,6 +39,6 @@ spec:
     app: triton-server
   ports:
     - protocol: TCP
-      port: 8001  # External port to access
-      targetPort: 8001  # Port in the container
+      port: 8000  # External port to access
+      targetPort: 8000  # Port in the container
   type: LoadBalancer  # Expose the service externally
