@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triton-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: triton-server
+  template:
+    metadata:
+      labels:
+        app: triton-server
+    spec:
+      hostNetwork: true  # Use host networking if required
+      containers:
+      - name: triton-server
+        image: your-docker-username/tritonserver-with-models:latest  # Use the custom image
+        ports:
+        - containerPort: 8001
+        resources:
+          limits:
+            nvidia.com/gpu: 1  # Request GPU resources
+        volumeMounts:
+        - name: dshm
+          mountPath: /dev/shm
+      volumes:
+      - name: dshm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 1Gi  # Set shared memory to 1GB
