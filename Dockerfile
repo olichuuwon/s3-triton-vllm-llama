@@ -1,5 +1,5 @@
 # Use the base Triton server image
-FROM nvcr.io/nvidia/tritonserver:24.08-vllm-python-py3
+FROM nvcr.io/nvidia/tritonserver:23.11-vllm-python-py3
 
 # Set the working directory inside the container
 WORKDIR /work

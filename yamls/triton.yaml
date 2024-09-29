@@ -15,7 +15,7 @@ spec:
       hostNetwork: true  # Use host networking if required
       containers:
       - name: triton-server
-        image: your-docker-username/tritonserver-with-models:latest  # Use the custom image
+        image: quay.io/jeslynlamxy/tritonserver-with-models:latest  # Use the custom image
         ports:
         - containerPort: 8001
         resources:
@@ -29,3 +29,16 @@ spec:
         emptyDir:
           medium: Memory
           sizeLimit: 1Gi  # Set shared memory to 1GB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: triton-server-service
+spec:
+  selector:
+    app: triton-server
+  ports:
+    - protocol: TCP
+      port: 8001  # External port to access
+      targetPort: 8001  # Port in the container
+  type: LoadBalancer  # Expose the service externally

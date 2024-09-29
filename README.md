@@ -44,4 +44,6 @@ curl -X POST localhost:8000/v2/models/vllm_model/generate -d \
 NVIDIA Triton Inference Server and the vLLM backend to serve large language models.
 - Triton takes care of the heavy lifting while vLLM boosts performance, giving you a straightforward way to handle inference requests efficiently.
 
-nvcr.io/nvidia/tritonserver:24.09-py3
+kubectl get svc triton-server-service
+
+curl http://<external-ip>:8001
