@@ -44,11 +44,9 @@ curl -X POST localhost:8000/v2/models/vllm_model/generate -d \
 NVIDIA Triton Inference Server and the vLLM backend to serve large language models.
 - Triton takes care of the heavy lifting while vLLM boosts performance, giving you a straightforward way to handle inference requests efficiently.
 
-kubectl get svc triton-server-service
+  http://example-triton-jes.apps.nebula.sl/
 
-curl http://<external-ip>:8001
-
-curl -X POST localhost:8000/v2/models/vllm_model/generate -d \
+  curl -X POST http://example-triton-jes.apps.nebula.sl/v2/models/vllm_model/generate -d \
   '{
       "text_input": "How would you describe the taste of rainbow to someone who has never seen one?",
       "parameters": 
@@ -57,3 +55,15 @@ curl -X POST localhost:8000/v2/models/vllm_model/generate -d \
               "max_tokens": 256
             }
   }'
+
+## Example
+
+  curl -X POST http://example-triton-jes.apps.nebula.sl/v2/models/vllm_model/generate -d   '{
+      "text_input": "How would you describe the taste of rainbow to someone who has never seen one?",
+      "parameters":
+            {
+              "stream": false,
+              "max_tokens": 256
+            }
+  }'
+{"model_name":"vllm_model","model_version":"1","text_output":"How would you describe the taste of rainbow to someone who has never seen one?\nnice, i've not had one. i'd suggest it to people who dont know a massive amount about it. i sent them an ad that read \"G makes way more rainbow beers than jags\" and i'm surprised they throw that out. Moist flavoured beers usually have bs flavor as the name implies."}
