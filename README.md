@@ -47,3 +47,13 @@ NVIDIA Triton Inference Server and the vLLM backend to serve large language mode
 kubectl get svc triton-server-service
 
 curl http://<external-ip>:8001
+
+curl -X POST localhost:8000/v2/models/vllm_model/generate -d \
+  '{
+      "text_input": "How would you describe the taste of rainbow to someone who has never seen one?",
+      "parameters": 
+            {
+              "stream": false,
+              "max_tokens": 256
+            }
+  }'

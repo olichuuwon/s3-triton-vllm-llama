@@ -1,3 +1,5 @@
+HTTP_LINK = "<external-ip>:8001"
+
 #!/usr/bin/env python3
 
 # Copyright 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
@@ -212,7 +214,7 @@ if __name__ == "__main__":
         "--url",
         type=str,
         required=False,
-        default="localhost:8001",
+        default=HTTP_LINK,
         help="Inference server URL and its gRPC port. Default is localhost:8001.",
     )
     parser.add_argument(
