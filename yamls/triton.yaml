@@ -12,7 +12,7 @@ spec:
       labels:
         app: triton-server
     spec:
-      hostNetwork: true  # Use host networking if required
+      # hostNetwork: true  # Use host networking if required
       containers:
       - name: triton-server
         image: quay.io/jeslynlamxy/tritonserver-with-models:latest  # Use the custom image
