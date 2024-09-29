@@ -56,7 +56,7 @@ NVIDIA Triton Inference Server and the vLLM backend to serve large language mode
             }
   }'
 
-## Example
+## Phase 1
 
   curl -X POST http://example-triton-jes.apps.nebula.sl/v2/models/vllm_model/generate -d   '{
       "text_input": "How would you describe the taste of rainbow to someone who has never seen one?",
