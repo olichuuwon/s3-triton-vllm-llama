@@ -177,9 +177,7 @@ When using Multi-Node MinIO deployment, consider setting a DNS address in the se
    juicefs-s3-gateway   ClusterIP   10.101.108.42   <none>        9000/TCP   142m
    ```
 
-You can use `juicefs-s3-gateway.${NAMESPACE}.svc.cluster.local:9000` or the pod IP and port number of juicefs-s3-gateway (e.g., `10.244.2.238:9000`) in the
-
- application pod to access JuiceFS S3 Gateway.
+You can use `juicefs-s3-gateway.${NAMESPACE}.svc.cluster.local:9000` or the pod IP and port number of juicefs-s3-gateway (e.g., `10.244.2.238:9000`) in the application pod to access JuiceFS S3 Gateway.
 
 ```bash
 2024/09/30 10:17:17.219263 juicefs[699] <INFO>: Volume is formatted as {
