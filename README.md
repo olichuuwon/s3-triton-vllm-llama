@@ -35,7 +35,7 @@ NVIDIA Triton Inference Server combined with the vLLM backend is used to serve l
 
 ---
 
-## Phase 1: Inference Example
+## Phase 1: Local Inference Example
 
 ### 1. Send an Inference Request
 
