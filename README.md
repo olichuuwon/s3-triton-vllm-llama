@@ -62,6 +62,7 @@ curl -X POST http://example-triton-jes.apps.nebula.sl/v2/models/vllm_model/gener
 
 ---
 
-This example provides a quick setup guide and inference example using Triton Inference Server with a vLLM backend. Make sure to adjust the placeholders (`<xx.yy>`) in the commands to the correct version numbers, version used in testing was 23.11.
+- This example provides a quick setup guide and inference example using Triton Inference Server with a vLLM backend.
+- Make sure to adjust the placeholders (`<xx.yy>`) in the commands to the correct version numbers, version used in testing was 23.11.
 
 ---
