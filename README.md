@@ -159,3 +159,31 @@ NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 juicefs-s3-gateway   ClusterIP   10.101.108.42   <none>        9000/TCP   142m
 
 You can use juicefs-s3-gateway.${NAMESPACE}.svc.cluster.local:9000 or pod IP and port number of juicefs-s3-gateway (e.g. 10.244.2.238:9000) in the application pod to access JuiceFS S3 Gateway.
+
+2024/09/30 10:17:17.219263 juicefs[699] <INFO>: Volume is formatted as {
+  "Name": "my-juicefs-again",
+  "UUID": "23f861b6-9cd8-4338-b28f-6e596b3c2eb7",
+  "Storage": "minio",
+  "Bucket": "http://s3.apps.nebula.sl/jes-vllm",
+  "AccessKey": "SDukzf3okSYKiQTd",
+  "SecretKey": "removed",
+  "BlockSize": 4096,
+  "Compression": "none",
+  "EncryptAlgo": "aes256gcm-rsa",
+  "KeyEncrypted": true,
+  "TrashDays": 1,
+  "MetaVersion": 1,
+  "MinClientVersion": "1.1.0-A",
+  "DirStats": true,
+  "EnableACL": false
+} [format.go:521]
+root@2451e4f3614d:/#
+root@2451e4f3614d:/# juicefs mount -d redis://localhost:6379 /tmp/mebucket
+2024/09/30 10:17:50.231717 juicefs[714] <INFO>: Meta address: redis://localhost:6379 [interface.go:504]
+2024/09/30 10:17:50.233281 juicefs[714] <WARNING>: AOF is not enabled, you may lose data if Redis is not shutdown properly. [info.go:84]
+2024/09/30 10:17:50.233394 juicefs[714] <INFO>: Ping redis latency: 71.401µs [redis.go:3515]
+2024/09/30 10:17:50.234909 juicefs[714] <INFO>: Data use minio://s3.apps.nebula.sl/jes-vllm/my-juicefs-again/ [mount.go:629]
+.2024/09/30 10:17:51.236899 juicefs[714] <INFO>: OK, my-juicefs-again is ready at /tmp/mebucket [mount_unix.go:200]
+root@2451e4f3614d:/#
+
+Privileged mode required, not optimal for security.
